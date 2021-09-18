@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return colors[Math.floor(Math.random() * colors.length)]
     };
 
+
     document.querySelectorAll('.heading').forEach(function (item) {
         item.addEventListener('dblclick', function () {
             item.style.color = randomColor();
@@ -58,12 +59,17 @@ document.addEventListener("DOMContentLoaded", function () {
         let newListItem = document.createElement('li');
         newListItem.className = 'listItems';
         timesClicked += 1;
-        let listText = document.createTextNode('This is list item ' + timesClicked);
+        let listText = document.createTextNode('This is a list item ' + timesClicked);
         newListItem.appendChild(listText);
         document.body.appendChild(newListItem);
         newListItem.addEventListener("click", function() {
-            console.log("clicked");
-            newListItem.style.color = randomColor();
+        newListItem.style.color = randomColor();
+        })
+        function removeListItem() {
+            newListItem.remove();
+        }
+        newListItem.addEventListener("dblclick", function() {
+            removeListItem();
         })
     }
 
